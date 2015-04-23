@@ -16,6 +16,10 @@ Depending on screen size it shows:
 
 [previous] [1] ... [4] [5] [6] -7- [8] [9] [10] ... [20] [next]
 
+## Installation
+
+Install with bower: `bower install https://github.com/timble/jekyll-pagination`
+
 ## Options
 The amount of pages shown can be set in your config.yml file using the `paginate_limit` setting. This setting shows this amount of pages PLUS the current page. So if you set it to `8` you will have 9 pages.
 
