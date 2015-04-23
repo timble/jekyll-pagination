@@ -1,4 +1,4 @@
-{% assign limit = site.limit %}
+{% assign limit = site.paginate_limit %}
 {% assign limitmin = limit | minus: 2 %}
 {% assign offset = limitmin | divided_by: 2 %}
 {% assign limitprev = paginator.page | minus: offset %}
@@ -63,13 +63,13 @@
         {% if count >= limitprev and count <= limitnext %}
             {% assign relative_to_current = paginator.page | minus: count | replace: '-', '' | divided_by: 1 %}
             {% unless count == totalpages %}
-            <li class="page offset-{{relative_to_current}}{% if count == paginator.page %} current-page{% endif %}">
-                {% if count == paginator.page %}
-                <span>{{ count }}</span>
-                {% else %}
-                <a href="/blog/page{{ count }}">{{ count }}</a>
-                {% endif %}
-            </li>
+                <li class="page offset-{{relative_to_current}}{% if count == paginator.page %} current-page{% endif %}">
+                    {% if count == paginator.page %}
+                    <span>{{ count }}</span>
+                    {% else %}
+                    <a href="/blog/page{{ count }}">{{ count }}</a>
+                    {% endif %}
+                </li>
             {% endunless %}
         {% endif %}
     {% endfor %}
