@@ -1,0 +1,205 @@
+// Breakpoint variables
+$pages-breakpoint1:         320px !default;
+$pages-breakpoint2:         500px !default;
+$pages-breakpoint3:         600px !default;
+$pages-breakpoint4:         768px !default;
+$pages-breakpoint5:         768px !default;
+$pages-breakpoint6:         768px !default;
+
+// Cosmetics variables
+$pages-cosmetics:           true !default;
+$pages-clearfix:            true !default;
+
+// Styling
+$pages-margin:              1em 0 !default;
+$pages-item-margin:         0 .2em !default;
+$pages-item-size:           36px !default;
+$pages-item-background:     #eee !default;
+$pages-item-color:          #333 !default;
+$pages-item-link-color:     #1847AD !default;
+$pages-item-shadow:         inset 0 0 5px rgba(0, 0, 0, .05) !default;
+$pages-item-hover:          #ddd !default;
+$pages-item-active:         #1879CE !default;
+$pages-item-active-shadow:  inset 0 0 5px rgba(0, 0, 0, .3) !default;
+$pages-item-active-color:   white !default;
+
+// Mixins
+@if $pages-clearfix == true {
+  @mixin clearfix {
+    &:before,
+    &:after {
+      content: " ";
+      display: table;
+    }
+
+    &:after {
+      clear: both;
+    }
+  }
+}
+
+// Behavioural
+.pagination {
+  @include clearfix;
+
+  li {
+    display: none;
+
+    a, span {
+      display: block;
+    }
+  }
+
+  a,
+  a:visited {
+    color: $pages-item-link-color;
+  }
+
+  // Always display the first, current and last page when
+  // They are available in the markup
+  .current-page,
+  .previous,
+  .next {
+    display: inline-block;
+  }
+
+  // First breakpoint
+  @include breakpoint($pages-breakpoint1) {
+
+    // When there are active indicators show them
+    // Using a double class here to win over future breakpoints
+    .pages-indicator.pages-indicator--active {
+      display: inline-block;
+    }
+
+    // The first and last item in the paginator
+    .first,
+    .last {
+      display: inline-block;
+    }
+
+    // Show indicators on smaller screen when other pages are hidden
+    // This way we'll never have "<previous 1 3 4 5 next>"
+    // But we'll have "<previous 1 ... 3 4 5 next>"
+    .pages-indicator--offset-2,
+    .pages-indicator--offset-3,
+    .pages-indicator--offset-4,
+    .pages-indicator--offset-5,
+    .pages-indicator--offset-6,
+    .pages-indicator--offset-7 {
+      display: inline-block;
+    }
+  }
+
+  @include breakpoint($pages-breakpoint2) {
+    // Show items next to active item
+    .offset-1 {
+      display: inline-block;
+    }
+
+    // And hide indicator to make room
+    .pages-indicator--offset-2 {
+      display: none;
+    }
+  }
+
+  @include breakpoint($pages-breakpoint3) {
+    // Show items 2 spots next to active item
+    .offset-2 {
+      display: inline-block;
+    }
+
+    // And hide indicator to make room
+    .pages-indicator--offset-3 {
+      display: none;
+    }
+  }
+
+  @include breakpoint($pages-breakpoint4) {
+    // Show items 3 spots next to active item
+    .offset-3 {
+      display: inline-block;
+    }
+
+    // And hide indicator to make room
+    .pages-indicator--offset-4 {
+      display: none;
+    }
+  }
+
+  @include breakpoint($pages-breakpoint5) {
+    // Show items 3 spots next to active item
+    .offset-4 {
+      display: inline-block;
+    }
+
+    // And hide indicator to make room
+    .pages-indicator--offset-5 {
+      display: none;
+    }
+  }
+
+  @include breakpoint($pages-breakpoint6) {
+    // Show items 3 spots next to active item
+    .offset-5 {
+      display: inline-block;
+    }
+
+    // And hide indicator to make room
+    .pages-indicator--offset-6 {
+      display: none;
+    }
+  }
+}
+
+// Cosmetic
+@if $pages-cosmetics == true {
+  .pagination {
+    padding: 0;
+    margin: $pages-margin;
+    text-align: center;
+
+    li {
+      margin: $pages-item-margin;
+      padding: 0;
+      list-style: none;
+
+      a, span {
+        text-decoration: none;
+      }
+
+      &.page {
+        a, span {
+          width: $pages-item-size;
+          height: $pages-item-size;
+          border-radius: $pages-item-size;
+          line-height: $pages-item-size;
+          background: $pages-item-background;
+          color: $pages-item-color;
+          box-shadow: $pages-item-shadow;
+
+        }
+        a:hover {
+          background: $pages-item-hover;
+        }
+
+        &.current-page {
+          span {
+            background: $pages-item-active;
+            box-shadow: $pages-item-active-shadow;
+            color: $pages-item-active-color;
+          }
+        }
+      }
+
+      &.current-page,
+      &.previous,
+      &.next {
+        a:hover,
+        a:focus {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
