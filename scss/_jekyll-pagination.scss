@@ -64,6 +64,7 @@ $pages-item-active-color:   white !default;
 
     .pagination-item {
       display: block;
+      speak-number: continuous;
     }
   }
 
@@ -80,11 +81,11 @@ $pages-item-active-color:   white !default;
     display: inline-block;
   }
 
-  .previous:before {
+  .previous a:before {
     content: "« "
   }
 
-  .previous:after {
+  .next a:after {
     content: " »"
   }
 
