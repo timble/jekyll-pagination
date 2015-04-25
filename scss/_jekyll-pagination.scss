@@ -12,6 +12,7 @@ $pages-breakpoint9:         768px !default;
 // Cosmetics variables
 $pages-cosmetics:           true !default;
 $pages-clearfix:            true !default;
+$pages-sr-only:             true !default;
 
 // Styling
 $pages-margin:              1em 0 !default;
@@ -41,6 +42,19 @@ $pages-item-active-color:   white !default;
   }
 }
 
+@if $pages-sr-only == true {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+  }
+}
+
 // Behavioural
 .pagination {
   @include clearfix;
@@ -48,7 +62,7 @@ $pages-item-active-color:   white !default;
   li {
     display: none;
 
-    a, span {
+    .pagination-item {
       display: block;
     }
   }
@@ -64,6 +78,14 @@ $pages-item-active-color:   white !default;
   .previous,
   .next {
     display: inline-block;
+  }
+
+  .previous:before {
+    content: "« "
+  }
+
+  .previous:after {
+    content: " »"
   }
 
   // First breakpoint
@@ -203,12 +225,12 @@ $pages-item-active-color:   white !default;
       padding: 0;
       list-style: none;
 
-      a, span {
+      .pagination-item {
         text-decoration: none;
       }
 
       &.page {
-        a, span {
+        .pagination-item {
           width: $pages-item-size;
           height: $pages-item-size;
           border-radius: $pages-item-size;
@@ -223,7 +245,7 @@ $pages-item-active-color:   white !default;
         }
 
         &.current-page {
-          span {
+          .pagination-item {
             background: $pages-item-active;
             box-shadow: $pages-item-active-shadow;
             color: $pages-item-active-color;
