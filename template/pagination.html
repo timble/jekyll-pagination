@@ -1,4 +1,7 @@
-{% assign limit = site.paginate_limit %}
+{% assign limit = 7 %}
+{% if site.paginate_limit %}
+    {% assign limit = site.paginate_limit %}
+{% endif %}
 {% assign limitmin = limit | minus: 2 %}
 {% assign offset = limitmin | divided_by: 2 %}
 {% assign limitprev = paginator.page | minus: offset %}
@@ -6,35 +9,37 @@
 {% assign totalpages = paginator.total_pages %}
 
 {% if limitprev <= 1 %}
-{% assign limitprevfix = limitprev | minus: 1 %}
-{% assign limitprev = 0 %}
-{% assign limitnext = limitnext | minus: limitprevfix | plus: 1 %}
+    {% assign limitprevfix = limitprev | minus: 1 %}
+    {% assign limitprev = 0 %}
+    {% assign limitnext = limitnext | minus: limitprevfix | plus: 1 %}
 {% endif %}
 
 {% if limitnext >= totalpages %}
-{% assign limitnextfix = totalpages | minus: limitnext | minus: 1 %}
-{% assign limitnext = totalpages %}
-{% assign limitprev = limitprev | plus: limitnextfix %}
+    {% assign limitnextfix = totalpages | minus: limitnext | minus: 1 %}
+    {% assign limitnext = totalpages %}
+    {% assign limitprev = limitprev | plus: limitnextfix %}
 {% endif %}
 
 {% assign dots_prev = limitprev | minus: 1 %}
 {% assign dots_next = totalpages | minus: 1 %}
 {% assign max_next = totalpages | minus: offset | minus: 1 %}
 
-{% for count in (2..paginator.total_pages) %}
-{% if count == dots_prev  %}
-{% assign indicator_first = ' pages-indicator--active' %}
+{% if totalpages > limit %}
+    {% for count in (2..paginator.total_pages) %}
+        {% if count == dots_prev  %}
+            {% assign indicator_first = ' pages-indicator--active' %}
+        {% endif %}
+        {% if count == dots_next and paginator.page < max_next %}
+            {% assign indicator_last = ' pages-indicator--active' %}
+        {% endif %}
+        {% if forloop.first %}
+            {% assign relative_first = paginator.page | minus: forloop.index | divided_by: 1 %}
+        {% endif %}
+        {% if forloop.last %}
+            {% assign relative_last = paginator.page | minus: forloop.index | replace: '-', '' | divided_by: 1 | plus: 1 %}
+        {% endif %}
+    {% endfor %}
 {% endif %}
-{% if count == dots_next and paginator.page < max_next %}
-{% assign indicator_last = ' pages-indicator--active' %}
-{% endif %}
-{% if forloop.first %}
-{% assign relative_first = paginator.page | minus: forloop.index | divided_by: 1 %}
-{% endif %}
-{% if forloop.last %}
-{% assign relative_last = paginator.page | minus: forloop.index | replace: '-', '' | divided_by: 1 | plus: 1 %}
-{% endif %}
-{% endfor %}
 
 <p id="pagination-label" class="pagination-label sr-only" aria-hidden="true">Pagination</p>
 
@@ -62,18 +67,18 @@
     {% endunless %}
 
     {% for count in (2..paginator.total_pages) %}
-    {% if count >= limitprev and count <= limitnext %}
-    {% assign relative_to_current = paginator.page | minus: count | replace: '-', '' | divided_by: 1 %}
-    {% unless count == totalpages %}
-    <li class="page offset-{{relative_to_current}}{% if count == paginator.page %} current-page{% endif %}">
-        {% if count == paginator.page %}
-        <span class="pagination-item"><span class="sr-only">current page</span><span aria-hidden="true">{{ count }}</span></span>
-        {% else %}
-        <a class="pagination-item" href="/blog/page{{ count }}"><span class="sr-only">page </span>{{ count }}</a>
+        {% if count >= limitprev and count <= limitnext %}
+            {% assign relative_to_current = paginator.page | minus: count | replace: '-', '' | divided_by: 1 %}
+            {% unless count == totalpages %}
+            <li class="page offset-{{relative_to_current}}{% if count == paginator.page %} current-page{% endif %}">
+                {% if count == paginator.page %}
+                <span class="pagination-item"><span class="sr-only">current page</span><span aria-hidden="true">{{ count }}</span></span>
+                {% else %}
+                <a class="pagination-item" href="/blog/page{{ count }}"><span class="sr-only">page </span>{{ count }}</a>
+                {% endif %}
+            </li>
+            {% endunless %}
         {% endif %}
-    </li>
-    {% endunless %}
-    {% endif %}
     {% endfor %}
 
     {% unless paginator.page == totalpages %}
