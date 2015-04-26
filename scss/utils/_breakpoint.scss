@@ -1,5 +1,7 @@
 @mixin breakpoint($breakpoint) {
-  @media (min-width:$breakpoint) {
-    @content;
+  @if $pages-breakpoint == true {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
   }
 }
