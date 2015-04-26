@@ -12,6 +12,7 @@ $pages-breakpoint9:         768px !default;
 // Cosmetics variables
 $pages-cosmetics:           true !default;
 $pages-clearfix:            true !default;
+$pages-breakpoint:          true !default;
 $pages-sr-only:             true !default;
 
 // Styling
@@ -29,30 +30,15 @@ $pages-item-active-color:   white !default;
 
 // Mixins
 @if $pages-clearfix == true {
-  @mixin clearfix {
-    &:before,
-    &:after {
-      content: " ";
-      display: table;
-    }
-
-    &:after {
-      clear: both;
-    }
-  }
+  @import "utils/clearfix";
+}
+@if $pages-breakpoint == true {
+  @import "utils/breakpoint";
 }
 
+// Classes
 @if $pages-sr-only == true {
-  .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0,0,0,0);
-    border: 0;
-  }
+  @import "utils/sr-only";
 }
 
 // Behavioural
