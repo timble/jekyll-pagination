@@ -1,13 +1,11 @@
-@mixin clearfix {
-  @if $pages-clearfix == true {
-    &:before,
-    &:after {
-      content: " ";
-      display: table;
-    }
+@mixin pages-clearfix {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
 
-    &:after {
-      clear: both;
-    }
+  &:after {
+    clear: both;
   }
 }
