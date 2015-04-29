@@ -46,11 +46,6 @@ $pages-item-active-color:   white !default;
     }
   }
 
-  a,
-  a:visited {
-    color: $pages-item-link-color;
-  }
-
   // Always display the first, current and last page when
   // They are available in the markup
   .current-page,
