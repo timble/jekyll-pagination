@@ -10,7 +10,8 @@
       padding: 0;
       list-style: none;
 
-      .pagination-item {
+      // No underlines on circle links
+      &.page .pagination-item {
         text-decoration: none;
       }
 
@@ -35,15 +36,6 @@
             box-shadow: $pages-item-active-shadow;
             color: $pages-item-active-color;
           }
-        }
-      }
-
-      &.current-page,
-      &.previous,
-      &.next {
-        a:hover,
-        a:focus {
-          text-decoration: underline;
         }
       }
     }
