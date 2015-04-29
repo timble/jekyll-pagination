@@ -1,4 +1,4 @@
-# jekyll-pagination
+# jekyll Pagination
 A Jekyll `include` file to have advanced pagination.
 
 Depending on screen size it shows:
