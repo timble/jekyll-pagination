@@ -1,7 +1,7 @@
 ![Jekyll Pagination](http://www.timble.net/images/blog/2015/jekyll-pagination.gif)
 
 # Better pagination for Jekyll
-A Jekyll `include` file of a Mobile-First pagination.
+A Jekyll `include` file of a Mobile-First pagination, configurable with _config.yml.
 
 ## Elements
 
