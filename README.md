@@ -35,3 +35,9 @@ This setting is also used to calculate the amount of pages before and after the 
 * Only set `$pages-clearfix` to `false` if you're already using another `clearfix @mixin` in your prject which this file can access.
 * All the styling variables are only applied when `$pages-cosmetics` is `true` (it's `true` by default)
 * The breakpoint variables are to show or hide pages when the screen is smaller. Use with caution since more pages then wanted may get hidden.
+
+## In action
+
+* [http://www.timble.net/blog](http://www.timble.net/blog)
+* [http://www.nooku.org/blog](http://www.nooku.org/blog)
+* [http://www.openpolice.be/blog](http://www.openpolice.be/blog)
