@@ -10,13 +10,9 @@
       padding: 0;
       list-style: none;
 
-      // No underlines on circle links
-      &.page .pagination-item {
-        text-decoration: none;
-      }
-
       &.page {
         .pagination-item {
+          text-decoration: none; // No underlines on circle links
           width: $pages-item-size;
           height: $pages-item-size;
           border-radius: $pages-item-size;
