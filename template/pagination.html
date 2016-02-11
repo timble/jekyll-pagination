@@ -48,7 +48,7 @@
     {% if paginator.previous_page %}
     <li class="previous">
         {% if paginator.previous_page == 1 %}
-        <a class="pagination-item" href="/blog" rel="prev">previous<span class="sr-only"> page</span></a>
+        <a class="pagination-item" href="{{ page.paginate_root }}" rel="prev">previous<span class="sr-only"> page</span></a>
         {% else %}
         <a class="pagination-item" href="{{ paginator.previous_page_path }}" rel="prev">previous<span class="sr-only"> page</span></a>
         {% endif %}
@@ -57,7 +57,7 @@
 
     {% unless paginator.page == 1 %}
     <li class="page first">
-        <a class="pagination-item" href="/blog"><span class="sr-only">page </span>1</a>
+        <a class="pagination-item" href="{{ page.paginate_root }}"><span class="sr-only">page </span>1</a>
     </li>
     <li class="pages-indicator{{ indicator_first }} pages-indicator--offset-{{ relative_first }}"><span aria-hidden="true">...</span><span class="sr-only">Skipped pages indicator</span></li>
     {% else %}
@@ -74,7 +74,7 @@
                 {% if count == paginator.page %}
                 <span class="pagination-item"><span class="sr-only">current page</span><span aria-hidden="true">{{ count }}</span></span>
                 {% else %}
-                <a class="pagination-item" href="/blog/page{{ count }}"><span class="sr-only">page </span>{{ count }}</a>
+                <a class="pagination-item" href="{{ page.paginate_root | append: '/page' | append: count | append: '/' | replace: '//', '/' }}"><span class="sr-only">page </span>{{ count }}</a>
                 {% endif %}
             </li>
             {% endunless %}
@@ -84,7 +84,7 @@
     {% unless paginator.page == totalpages %}
     <li class="pages-indicator{{ indicator_last }} pages-indicator--offset-{{ relative_last }}"><span aria-hidden="true">...</span><span class="sr-only">Skipped pages indicator</span></li>
     <li class="page last">
-        <a class="pagination-item" href="/blog/page{{ totalpages }}"><span class="sr-only">page </span>{{ totalpages }}</a>
+        <a class="pagination-item" href="{{ page.paginate_root | append: '/page' | append: totalpages | append: '/' | replace: '//', '/' }}"><span class="sr-only">page </span>{{ totalpages }}</a>
     </li>
     {% else %}
     <li class="page last current-page">
