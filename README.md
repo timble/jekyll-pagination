@@ -38,6 +38,6 @@ This setting is also used to calculate the amount of pages before and after the 
 
 ## In action
 
-* [http://www.timble.net/blog](http://www.timble.net/blog)
-* [http://www.nooku.org/blog](http://www.nooku.org/blog)
-* [http://www.openpolice.be/blog](http://www.openpolice.be/blog)
+* [www.timble.net/blog/](http://www.timble.net/blog/)
+* [www.joomlatools.com/blog/](https://www.joomlatools.com/blog/)
+* [www.joomlatools.com/developer/blog/](https://www.joomlatools.com/developer/blog/)
