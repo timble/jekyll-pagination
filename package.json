@@ -1,0 +1,15 @@
+{
+  "name": "jekyll-pagination",
+  "version": "1.3.0",
+  "description": "Jekyll Pagination",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timble/jekyll-pagination.git"
+  },
+  "author": "Timble CVBA <info@timble.net> (https://www.timble.net)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/timble/jekyll-pagination/issues"
+  },
+  "homepage": "https://github.com/timble/jekyll-pagination#readme"
+}
